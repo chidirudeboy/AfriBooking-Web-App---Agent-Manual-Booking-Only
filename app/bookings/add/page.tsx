@@ -153,6 +153,11 @@ function AddManualBookingContent() {
     try {
       setLoading(true);
       const userId = user._id || user.id;
+      
+      if (!userId) {
+        setError('User authentication required');
+        return;
+      }
 
       const selectedApartment = apartments.find(
         (apt) => apt._id === formData.selectedApartment
